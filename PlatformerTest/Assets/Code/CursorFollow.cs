@@ -11,28 +11,47 @@ public class CursorFollow : MonoBehaviour
 
     [SerializeField] private GameObject lightPlatform;
 
+
     private SpriteRenderer _spriteRenderer;
     private Color spriteColor;
 
     private float distNormalized;
 
+    [SerializeField] private bool isBlocked;
+
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-
     private void Update()
     {
         UpdatePosition();
-
+        CalculateRay();
         UpdateOpacity();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            InstantiatePlatform();
-        }
 
+        if (!isBlocked)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                InstantiatePlatform();
+            }
+        }        
+     }
+    
+    private void CalculateRay()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position);
+        print(hit.collider);
+
+        if (hit.collider != null)
+        {
+            isBlocked = false;
+        }
+        else
+        {
+            isBlocked = true;
+        }
     }
 
     private void UpdatePosition()
@@ -43,13 +62,14 @@ public class CursorFollow : MonoBehaviour
     }
     private void UpdateOpacity()
     {
-        float dist = Vector2.Distance(transform.position, player.position);
-
-
-        distNormalized = Mathf.Clamp((dist / flashLightRange), 0.2f, 1f);
-        float colorApply = (1 - distNormalized);
+        float colorApply = 0f;
+        if (!isBlocked)
+        {
+            float dist = Vector2.Distance(transform.position, player.position);
+            distNormalized = Mathf.Clamp((dist / flashLightRange), 0.2f, 1f);
+            colorApply = (1 - distNormalized);
+        }
         spriteColor = _spriteRenderer.color;
-
         _spriteRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, colorApply);
     }
     private void InstantiatePlatform()

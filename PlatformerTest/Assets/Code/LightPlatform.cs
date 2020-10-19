@@ -12,8 +12,11 @@ public class LightPlatform : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    private CursorFollow _cursorFollow;
+
     private void Start()
     {
+        _cursorFollow = FindObjectOfType<CursorFollow>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -30,6 +33,7 @@ public class LightPlatform : MonoBehaviour
 
         if (lifeSpan < 0)
         {
+            _cursorFollow.currentPlatforms--;
             Destroy(gameObject);
         }
     }
@@ -51,7 +55,7 @@ public class LightPlatform : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             lifeSpan -= fadeRate;
-            print(lifeSpan);
+           // print(lifeSpan);
         }
     }
 

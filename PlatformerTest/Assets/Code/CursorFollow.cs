@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class CursorFollow : MonoBehaviour
 {
+    /// <summary>
+    /// Code for the empty that follows the mouse cursor. Also instantiates platforms (simulating the flashlight)
+    /// </summary>
 
     Vector3 mousePos;
     [SerializeField] private Transform player;
@@ -18,6 +22,11 @@ public class CursorFollow : MonoBehaviour
     private float distNormalized;
 
     [SerializeField] private bool isBlocked;
+    [SerializeField] private bool onCooldown;
+
+    public int currentPlatforms;
+    [SerializeField] private int maxPlatforms;
+    [SerializeField] private float delayBetweenPlatforms;
 
     private void Start()
     {
@@ -30,7 +39,7 @@ public class CursorFollow : MonoBehaviour
         UpdateOpacity();
 
 
-        if (!isBlocked)
+        if (!isBlocked && !onCooldown && (maxPlatforms >= currentPlatforms))
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -41,8 +50,12 @@ public class CursorFollow : MonoBehaviour
     
     private void CalculateRay()
     {
+
+        /*
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position);
-        print(hit.collider);
+        //Debug.DrawRay2D(transform.position, player.position); 
+
+        
 
         if (hit.collider != null)
         {
@@ -51,8 +64,27 @@ public class CursorFollow : MonoBehaviour
         else
         {
             isBlocked = true;
+        }*/
+
+
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, player.position, 1<<8);
+        Debug.DrawLine(transform.position, player.position);
+        print(hit.collider);
+
+
+        if (hit == false)
+        {
+            isBlocked = false;
+        } else
+        {
+            isBlocked = true;
         }
+
     }
+
+
+
+
 
     private void UpdatePosition()
     {
@@ -63,7 +95,7 @@ public class CursorFollow : MonoBehaviour
     private void UpdateOpacity()
     {
         float colorApply = 0f;
-        if (!isBlocked)
+        if (!isBlocked && !onCooldown)
         {
             float dist = Vector2.Distance(transform.position, player.position);
             distNormalized = Mathf.Clamp((dist / flashLightRange), 0.2f, 1f);
@@ -76,7 +108,14 @@ public class CursorFollow : MonoBehaviour
     {
         GameObject platform = Instantiate(lightPlatform, transform.position, transform.rotation);
         platform.GetComponent<LightPlatform>().StartCountdown(distNormalized);
-
+        currentPlatforms++;
+        StartCoroutine(FlashlightCooldown());
+    }
+    private IEnumerator FlashlightCooldown()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(delayBetweenPlatforms);
+        onCooldown = false;
     }
 
 

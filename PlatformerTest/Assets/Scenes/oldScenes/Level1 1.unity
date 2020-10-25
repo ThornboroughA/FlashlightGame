@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightPlatform: {fileID: 1439428035}
+  lightOnOff: 0
 --- !u!61 &38922363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1506,7 +1507,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1282790301329595697, guid: 75c4e6d8c47fac040a94d3633013a984, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.59, y: 0.68}
@@ -2180,6 +2181,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.9505461
       objectReference: {fileID: 0}
+    - target: {fileID: 451830618596594259, guid: 9ac80d07bc728d347a02521647f23c91, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 451830618596594262, guid: 9ac80d07bc728d347a02521647f23c91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.96
@@ -2375,6 +2380,10 @@ MonoBehaviour:
   flashLightRange: 10
   lightPlatform: {fileID: 3761376596987546679, guid: f880df8eb4ee32e489c5c2785989c001, type: 3}
   isBlocked: 0
+  onCooldown: 0
+  currentPlatforms: 0
+  maxPlatforms: 3
+  delayBetweenPlatforms: 1
 --- !u!212 &1568674079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2961,6 +2970,10 @@ PrefabInstance:
     - target: {fileID: 451830618596594259, guid: 9ac80d07bc728d347a02521647f23c91, type: 3}
       propertyPath: m_Color.g
       value: 0.9505461
+      objectReference: {fileID: 0}
+    - target: {fileID: 451830618596594259, guid: 9ac80d07bc728d347a02521647f23c91, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451830618596594262, guid: 9ac80d07bc728d347a02521647f23c91, type: 3}
       propertyPath: m_LocalPosition.x

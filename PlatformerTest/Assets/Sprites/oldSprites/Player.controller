@@ -66,8 +66,13 @@ AnimatorStateMachine:
     m_State: {fileID: -963324750804918337}
     m_Position: {x: 710, y: 470, z: 0}
   - serializedVersion: 1
+<<<<<<< HEAD:PlatformerTest/Assets/Sprites/oldSprites/Player.controller
     m_State: {fileID: -5936338592717225601}
     m_Position: {x: 400, y: 260, z: 0}
+=======
+    m_State: {fileID: 233902848403379221}
+    m_Position: {x: 680, y: 60, z: 0}
+>>>>>>> fed04b290aeb0e2f0c9156709a8eacdfd786238e:PlatformerTest/Assets/Sprites/Player.controller
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:

@@ -84,7 +84,6 @@ public class CursorFollow : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(transform.position, player.position, 1<<8);
         Debug.DrawLine(transform.position, player.position);
-        print(hit.collider);
 
 
         if (hit == false)

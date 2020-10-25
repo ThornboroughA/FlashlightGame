@@ -6,13 +6,14 @@ public class LightPlatform : MonoBehaviour
 {
 
 
-    private float lifeSpan = 1f;
-    [SerializeField] private float fadeRate = 0.02f;
+    public float lifeSpan = 1f;
+    public float fadeRate = 0.02f;
     private float lifeMultiplier = 2f;
 
     private SpriteRenderer _spriteRenderer;
 
     private CursorFollow _cursorFollow;
+
 
     private void Start()
     {
@@ -58,6 +59,5 @@ public class LightPlatform : MonoBehaviour
            // print(lifeSpan);
         }
     }
-
 
 }

@@ -8,6 +8,8 @@ public class LightSwitchCode : MonoBehaviour
 
     public GameObject lightPlatform;
     public bool lightOnOff;
+
+
     void Start()
     {
          lightOnOff = false; 

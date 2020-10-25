@@ -15,13 +15,24 @@ public class Player : MonoBehaviour
     
     private SpriteRenderer sprite;
     public static bool flashlight;
+    [SerializeField] private bool hasFlashlightAtStart = false;
+
+
     // change player sprite 
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        flashlight = false; 
+
+        if (hasFlashlightAtStart)
+        {
+            flashlight = true;
+        }
+        else
+        {
+            flashlight = false;
+        }
     }
 
 

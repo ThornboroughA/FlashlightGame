@@ -28,7 +28,7 @@ public class LightSwitchCode : MonoBehaviour
 
 
     }
-
+   
    void OnTriggerEnter2D(Collider2D collision)
     {           
             lightOnOff = !lightOnOff;

@@ -12,9 +12,12 @@ public class CursorFollow : MonoBehaviour
     Vector3 mousePos;
     [SerializeField] private Transform player;
     [SerializeField] private float flashLightRange;
-
+    
     [SerializeField] private GameObject lightPlatform;
 
+
+     // have layer order of sprite change in here
+    // depending on bool contained in separate script
 
     private SpriteRenderer _spriteRenderer;
     private Color spriteColor;
@@ -30,23 +33,36 @@ public class CursorFollow : MonoBehaviour
 
     private void Start()
     {
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    private void Update()
+    void Update()
     {
+        if (Player.flashlight == false)
+        {
+            print("false");
+            _spriteRenderer.sortingOrder = -2;
+            return;
+        }
+        else {
+
+            print("flashlight arrived!");
+
+        _spriteRenderer.sortingOrder = 2;
         UpdatePosition();
         CalculateRay();
         UpdateOpacity();
 
-
+       
         if (!isBlocked && !onCooldown && (maxPlatforms >= currentPlatforms))
         {
             if (Input.GetMouseButtonDown(0))
             {
                 InstantiatePlatform();
             }
-        }        
-     }
+        }
+        }
+    }
     
     private void CalculateRay()
     {

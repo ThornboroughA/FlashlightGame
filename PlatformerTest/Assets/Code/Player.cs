@@ -12,11 +12,16 @@ public class Player : MonoBehaviour
     [SerializeField] private bool grounded;
     [SerializeField] private Transform feetPoint;
     [SerializeField] private LayerMask groundLayer;
+    
+    private SpriteRenderer sprite;
+    public static bool flashlight;
+    // change player sprite 
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        flashlight = false; 
     }
 
 
@@ -42,7 +47,19 @@ public class Player : MonoBehaviour
             _rigidBody.AddForce(new Vector3(0,jumpForce));
         }
 
-        _animator.SetBool("Grounded", grounded);
+        _animator.SetBool("Grounded", grounded); 
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+
+        if (collision.tag == "flashlight") {
+
+            flashlight = true;
+            print("flashlight obtained!");
+           
+        }
+
 
     }
 

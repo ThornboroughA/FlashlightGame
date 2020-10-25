@@ -14,12 +14,16 @@ public class CursorFollow : MonoBehaviour
     
     [SerializeField] private GameObject lightPlatform;
 
+    [SerializeField] private AudioClip[] lightClickSound;
+    private AudioSource _audioSource;
+
 
      // have layer order of sprite change in here
     // depending on bool contained in separate script
 
     private SpriteRenderer _spriteRenderer;
-    private Color spriteColor;
+    private Color baseSpriteColor;
+    [SerializeField] private Color blockedSpriteColor;
 
     private float distNormalized;
 
@@ -32,27 +36,25 @@ public class CursorFollow : MonoBehaviour
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        baseSpriteColor = _spriteRenderer.color;
     }
     void Update()
     {
         if (Player.flashlight == false)
         {
-            print("false");
-            _spriteRenderer.sortingOrder = -2;
+            _spriteRenderer.sortingOrder = -10;
             return;
         }
         else {
-
-            print("flashlight arrived!");
 
         _spriteRenderer.sortingOrder = 2;
         UpdatePosition();
         CalculateRay();
         UpdateOpacity();
 
-       
         if (!isBlocked && !onCooldown && (maxPlatforms >= currentPlatforms))
         {
             if (Input.GetMouseButtonDown(0))
@@ -65,26 +67,8 @@ public class CursorFollow : MonoBehaviour
     
     private void CalculateRay()
     {
-
-        /*
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position);
-        //Debug.DrawRay2D(transform.position, player.position); 
-
-        
-
-        if (hit.collider != null)
-        {
-            isBlocked = false;
-        }
-        else
-        {
-            isBlocked = true;
-        }*/
-
-
         RaycastHit2D hit = Physics2D.Linecast(transform.position, player.position, 1<<8);
         Debug.DrawLine(transform.position, player.position);
-
 
         if (hit == false)
         {
@@ -93,12 +77,7 @@ public class CursorFollow : MonoBehaviour
         {
             isBlocked = true;
         }
-
     }
-
-
-
-
 
     private void UpdatePosition()
     {
@@ -109,20 +88,37 @@ public class CursorFollow : MonoBehaviour
     private void UpdateOpacity()
     {
         float colorApply = 0f;
-        if (!isBlocked && !onCooldown)
+        //calculate opacity based on distance
+        float dist = Vector2.Distance(transform.position, player.position);
+        distNormalized = Mathf.Clamp((dist / flashLightRange), 0.2f, 1f);
+        colorApply = (1 - distNormalized);
+
+        if (!isBlocked && !onCooldown && (maxPlatforms >= currentPlatforms))
         {
-            float dist = Vector2.Distance(transform.position, player.position);
-            distNormalized = Mathf.Clamp((dist / flashLightRange), 0.2f, 1f);
-            colorApply = (1 - distNormalized);
+        _spriteRenderer.color = new Color(baseSpriteColor.r, baseSpriteColor.g, baseSpriteColor.b, colorApply);
+        } 
+        else
+        {
+        _spriteRenderer.color = new Color(blockedSpriteColor.r, blockedSpriteColor.g, blockedSpriteColor.b, (colorApply / 2));
         }
-        spriteColor = _spriteRenderer.color;
-        _spriteRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, colorApply);
+        
+        
     }
     private void InstantiatePlatform()
     {
         GameObject platform = Instantiate(lightPlatform, transform.position, transform.rotation);
         platform.GetComponent<LightPlatform>().StartCountdown(distNormalized);
+        _audioSource.PlayOneShot(lightClickSound[Random.Range(0, 2)]);
+
         currentPlatforms++;
+
+        //moved this to after platform disappears (called from platform script) so you can't chain infinite platforms, but if we want
+        //multiple again, I think we'll need to change it back to this one.
+        //StartCoroutine(FlashlightCooldown());
+    }
+
+    public void StartCooldown()
+    {
         StartCoroutine(FlashlightCooldown());
     }
     private IEnumerator FlashlightCooldown()

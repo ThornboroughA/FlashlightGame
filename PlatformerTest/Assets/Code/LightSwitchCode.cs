@@ -7,7 +7,7 @@ public class LightSwitchCode : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject lightPlatform;
-    public static bool lightOnOff;
+    public bool lightOnOff;
     void Start()
     {
          lightOnOff = false; 

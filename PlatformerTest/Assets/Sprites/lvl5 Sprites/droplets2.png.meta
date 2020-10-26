@@ -113,34 +113,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-<<<<<<< HEAD
-=======
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
->>>>>>> 064aa80b7fefe1e19549af1d5f66304852c7ca91
-    buildTarget: WebGL
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -158,11 +131,7 @@ TextureImporter:
       name: droplets2_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
         x: 29
-=======
-        x: 26
->>>>>>> 064aa80b7fefe1e19549af1d5f66304852c7ca91
         y: 387
         width: 48
         height: 8
@@ -246,11 +215,7 @@ TextureImporter:
       name: droplets2_4
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
         x: 35
-=======
-        x: 34
->>>>>>> 064aa80b7fefe1e19549af1d5f66304852c7ca91
         y: 274
         width: 350
         height: 29
@@ -270,7 +235,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 695bbb447311a0e4896963320cbcdd7b
     internalID: 0
     vertices: []
     indices: 

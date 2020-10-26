@@ -487,6 +487,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2682250911521794471, guid: e9a62aad33e87dc4fb2a0d2f17371100, type: 3}
+      propertyPath: lightPlatform
+      value: 
+      objectReference: {fileID: 178753748}
     - target: {fileID: 5499260786864257575, guid: e9a62aad33e87dc4fb2a0d2f17371100, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.67
@@ -539,6 +543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 7906493243779730234, guid: e9a62aad33e87dc4fb2a0d2f17371100, type: 3}
+      propertyPath: lightPlatform
+      value: 
+      objectReference: {fileID: 178753748}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a62aad33e87dc4fb2a0d2f17371100, type: 3}
 --- !u!1001 &259959470
@@ -2206,6 +2214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 888819057}
     m_Modifications:
+    - target: {fileID: 1270006692388224611, guid: e73661d3639e23d42a65373f85fac030, type: 3}
+      propertyPath: isPermanent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2154350428276233048, guid: e73661d3639e23d42a65373f85fac030, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.0000715
@@ -2253,6 +2265,10 @@ PrefabInstance:
     - target: {fileID: 3761376596987546679, guid: e73661d3639e23d42a65373f85fac030, type: 3}
       propertyPath: m_Name
       value: Platform_Permanent (light switch)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305432681833554414, guid: e73661d3639e23d42a65373f85fac030, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e73661d3639e23d42a65373f85fac030, type: 3}

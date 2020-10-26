@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7869131849612384727}
   - component: {fileID: 3262255049418674425}
   - component: {fileID: 2342180938462554497}
-  - component: {fileID: 1577148049194260405}
+  - component: {fileID: 3436243871947421946}
   m_Layer: 8
   m_Name: spriteRendererPLAT
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4323997327099859409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.03, y: -4.75, z: 0}
-  m_LocalScale: {x: 4.4270496, y: 0.49288616, z: 1.1789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1e3733445590ac46a9d2e4d5d85aaa0, type: 3}
+  m_Sprite: {fileID: 860865200416948714, guid: ef67c747136b27f438e26276d8b50086, type: 3}
   m_Color: {r: 0.9960785, g: 0.9058824, b: 0.8117648, a: 0.6745098}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,20 +117,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0061581135, y: -0.00000047683716}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.25, y: 2.45}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2439752, y: 2.3794584}
   m_EdgeRadius: 0
---- !u!114 &1577148049194260405
+--- !u!114 &3436243871947421946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4323997327099859409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ea9158d50bec747a9236894c6b1d7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ea10498b0f4173041a78bed1b539eabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeSpan: 1
+  fadeRate: 0.02
+  isPermanent: 1

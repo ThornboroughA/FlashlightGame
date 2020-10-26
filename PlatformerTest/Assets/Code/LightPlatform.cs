@@ -14,6 +14,8 @@ public class LightPlatform : MonoBehaviour
 
     private CursorFollow _cursorFollow;
 
+    public bool isPermanent = false;
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class LightPlatform : MonoBehaviour
         if (lifeSpan < 0)
         {
             _cursorFollow.currentPlatforms--;
+            _cursorFollow.StartCooldown();
             Destroy(gameObject);
         }
     }
@@ -51,6 +54,7 @@ public class LightPlatform : MonoBehaviour
 
     private IEnumerator LifeSpanCountdown()
     {
+
         while (lifeSpan > 0)
         {
             yield return new WaitForSeconds(0.1f);

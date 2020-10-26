@@ -10,15 +10,19 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float speed = 2;
     [SerializeField] private float distance = 5;
     private float startPosition;
+    private float startPositionY;
+    [SerializeField] private bool moveVertically = false;
 
     [SerializeField] private bool canBeStoppedByFlashlight = true;
     private bool flashlightHit = false;
 
     private float localTimer = 0f;
+    private bool activePermPlatform = false;
 
     private void Start()
     {
         startPosition = transform.position.x;
+        startPositionY = transform.position.y;
         StartCoroutine(TimerMethod());
 
     }
@@ -26,19 +30,23 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-
-
         if (!flashlightHit)
         {
             MovePlatform();
-        }
-       
+        }  
     }
 
     private void MovePlatform()
     { 
         Vector2 newPosition = transform.position;
-        newPosition.x = Mathf.SmoothStep(startPosition, startPosition + distance, Mathf.PingPong(localTimer * speed, 1));
+
+        if (!moveVertically)
+        {
+            newPosition.x = Mathf.SmoothStep(startPosition, startPosition + distance, Mathf.PingPong(localTimer * speed, 1));
+        } else
+        {
+            newPosition.y = Mathf.SmoothStep(startPositionY, startPositionY + distance, Mathf.PingPong(localTimer * speed, 1));
+        }
         transform.position = newPosition;
     }
 
@@ -49,7 +57,6 @@ public class MovingPlatform : MonoBehaviour
             collision.transform.SetParent(transform);
         } 
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -60,20 +67,22 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("light platform");
-
         if (collision.gameObject.GetComponent<LightPlatform>())
         {
             LightPlatform lightPlatform = collision.gameObject.GetComponent<LightPlatform>();
 
             float platformTime = lightPlatform.lifeSpan;
             float timeRate = lightPlatform.fadeRate;
+            activePermPlatform = lightPlatform.isPermanent;
 
             if (canBeStoppedByFlashlight)
             {
                 flashlightHit = true;
 
-                StartCoroutine(RestartTimer(platformTime, timeRate));
+                if (!activePermPlatform)
+                {
+                    StartCoroutine(RestartTimer(platformTime, timeRate));
+                }
             }
 
         }
@@ -86,9 +95,19 @@ public class MovingPlatform : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             platformTime -= timeRate;
-            
         }
         flashlightHit = false;
+    }
+
+    //for when lightswitch platforms are turned off
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("trigger exit hit");
+
+        if (collision.gameObject.GetComponent<LightPlatform>() && activePermPlatform)
+        {
+            flashlightHit = false;
+        }
     }
 
 
@@ -99,6 +118,7 @@ public class MovingPlatform : MonoBehaviour
         {
             while (!flashlightHit)
             {
+
                 yield return new WaitForSeconds(0.015f);
                 localTimer += (0.015f);
             }

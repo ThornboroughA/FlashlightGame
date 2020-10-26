@@ -685,30 +685,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &307665056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5913668212652520524, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-  m_PrefabInstance: {fileID: 1557067990}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &307665061
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307665056}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 23df61c10d381f94a9e8dfeb43f5a2cd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &323091579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2292,10 +2268,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4684375068230951333, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d609e88310c34a94c9036230fdf74222, type: 3}
     - target: {fileID: 5913668212652520524, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
       propertyPath: m_Name
       value: CursorFollow
@@ -2348,34 +2320,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1284916041}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: maxPlatforms
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: delayBetweenPlatforms
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: blockedSpriteColor.r
-      value: 0.20754719
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: blockedSpriteColor.g
-      value: 0.16798389
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: blockedSpriteColor.b
-      value: 0.10671058
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520526, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: isBlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668212652520527, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3338804899792395765, guid: ef67c747136b27f438e26276d8b50086, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c0a6fe1e3db54f4384ac78352b388c6, type: 3}
 --- !u!1 &1587384655

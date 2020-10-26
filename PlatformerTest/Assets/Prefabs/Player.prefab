@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1086354381279637276}
   - component: {fileID: 1086354381279637279}
   - component: {fileID: 1086354381279637267}
-  - component: {fileID: 1086354381279637264}
+  - component: {fileID: -5170184272167860921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,7 +183,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!95 &1086354381279637264
+  hasFlashlightAtStart: 0
+--- !u!95 &-5170184272167860921
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

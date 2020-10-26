@@ -9,10 +9,15 @@ public class LightSwitchCode : MonoBehaviour
     public GameObject lightPlatform;
     public bool lightOnOff;
 
+    private AudioSource _audioSource;
+    private SpriteRenderer _spriteRenderer;
+
 
     void Start()
     {
-         lightOnOff = false; 
+         lightOnOff = false;
+        _audioSource = GetComponent<AudioSource>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -32,8 +37,12 @@ public class LightSwitchCode : MonoBehaviour
     }
    
    void OnTriggerEnter2D(Collider2D collision)
-    {           
+    {
+
+        _audioSource.PlayOneShot(_audioSource.clip);
+        _spriteRenderer.flipY = !_spriteRenderer.flipY;
             lightOnOff = !lightOnOff;
+
     }
 
 
